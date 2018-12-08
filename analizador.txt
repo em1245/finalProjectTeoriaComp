@@ -1,0 +1,28 @@
+
+while-->palabra reservada
+
+(-->signo de agrupacion
+
+x-->variables
+
+==-->operadores relacioneales
+
+5-->valor
+
+)-->signo de agrupacion
+
+{-->llaves
+
+for-->palabra reservada
+
+{-->llaves
+
+i-->variables
+
+=-->operadores relacioneales
+
+0-->valor
+
+}}-->llaves
+
+;-->punto y coma
