@@ -9,6 +9,7 @@ import java.io.FileReader;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import modulo.Analizador;
+import modulo.leerarchivo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,6 +48,7 @@ public class principal_Formulario extends javax.swing.JFrame {
         btnEjecutar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
+        btnabrir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +64,13 @@ public class principal_Formulario extends javax.swing.JFrame {
         txtResultado.setEnabled(false);
         jScrollPane1.setViewportView(txtResultado);
 
+        btnabrir.setText("Abrir archivo");
+        btnabrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnabrirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -72,7 +81,9 @@ public class principal_Formulario extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(294, 294, 294)
+                        .addGap(124, 124, 124)
+                        .addComponent(btnabrir)
+                        .addGap(80, 80, 80)
                         .addComponent(btnEjecutar)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
@@ -80,7 +91,9 @@ public class principal_Formulario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(btnEjecutar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEjecutar)
+                    .addComponent(btnabrir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -122,6 +135,14 @@ public class principal_Formulario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEjecutarActionPerformed
 
+    private void btnabrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabrirActionPerformed
+       
+        leerarchivo ar = new leerarchivo();
+        ar.leer();
+        
+        
+    }//GEN-LAST:event_btnabrirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -159,6 +180,7 @@ public class principal_Formulario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEjecutar;
+    public javax.swing.JButton btnabrir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextArea txtResultado;

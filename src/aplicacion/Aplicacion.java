@@ -8,6 +8,7 @@ package aplicacion;
 import javax.swing.JOptionPane;
 import modulo.Analizador;
 import modulo.Sintactico;
+import vistas.principal_Formulario;
 
 /**
  *
@@ -20,9 +21,14 @@ public class Aplicacion {
      */
     public static void main(String[] args) {
         
+        
+        principal_Formulario pf = new principal_Formulario(); 
+        pf.show();
         Analizador run = new Analizador();
+        
         Sintactico s = new Sintactico();
         run.runAnalizador();
+        
         boolean opc = s.validar();
         if(opc == true){
             JOptionPane.showMessageDialog(null, "es correcto");

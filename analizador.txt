@@ -11,18 +11,4 @@ x-->variables
 
 )-->signo de agrupacion
 
-{-->llaves
-
-for-->palabra reservada
-
-{-->llaves
-
-i-->variables
-
-=-->operadores relacioneales
-
-0-->valor
-
-}}-->llaves
-
 ;-->punto y coma

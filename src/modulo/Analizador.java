@@ -35,8 +35,15 @@ ArrayList<String>lexico = new ArrayList<String>();
     
     public void runAnalizador(){
         
-        String patron = ("(for|do|while)|([a-zA-Z]+)|([>|<|==]+)|([0-9]+)|([(|)]+)|([{|}]+)|(=)|(;)");
-        principal_Formulario pr = new principal_Formulario();
+        //El patron tiene modificado la expresion regular
+        //como los codigos no aceptaran decimales, le removi el token o grupo
+        //([0-9]+) que permitia combinacionespara valores.
+        //le agregue el grupo (0x[0-9a-fA-F]|0X[0-9a-fA-F]+)
+        //y un metodo que convierte de hexa a deci.
+        
+        String patron = ("(for|do|while)|([a-zA-Z]+)|([>|<|==]+)|(0x[0-9a-fA-F]+|0X[0-9a-fA-f]+)|([(|)]+)|([{|}]+)|(=)|(;)");
+        
+        /*principal_Formulario pr = new principal_Formulario();*/
         String cadena = "";
        
        
@@ -66,8 +73,11 @@ ArrayList<String>lexico = new ArrayList<String>();
                     String token4 = matcher.group(4);
                     if(token4 != null){
                        // System.out.println("valor: "+token4);
-                        cadena = "-->valor";
-                        lexico.add("\n"+token4+cadena);
+                       
+                       cadena = "-->Hexa-->"+hexa_deci(token4)+"-->Deci";
+                       lexico.add("\n"+token4+cadena);
+                       
+                       
                     }
                     
                      String token5 = matcher.group(5);
@@ -143,5 +153,30 @@ ArrayList<String>lexico = new ArrayList<String>();
     }
     
     }
+    
+    public long hexa_deci(String n) {
+        long suma = 0;
+        StringBuilder convertidor = new StringBuilder(n).reverse();
+        for (int i = 0; i < convertidor.length() - 2; i++) {
+            if (convertidor.charAt(i) == 'a' || convertidor.charAt(i) == 'A') {
+                suma += 10 * (Math.pow(16, i));
+            } else if (convertidor.charAt(i) == 'b' || convertidor.charAt(i) == 'B') {
+                suma += 11 * (Math.pow(16, i));
+            } else if (convertidor.charAt(i) == 'c' || convertidor.charAt(i) == 'C') {
+                suma += 12 * (Math.pow(16, i));
+            } else if (convertidor.charAt(i) == 'd' || convertidor.charAt(i) == 'D') {
+                suma += 13 * (Math.pow(16, i));
+            } else if (convertidor.charAt(i) == 'e' || convertidor.charAt(i) == 'E') {
+                suma += 14 * (Math.pow(16, i));
+            } else if (convertidor.charAt(i) == 'f' || convertidor.charAt(i) == 'F') {
+                suma += 15 * (Math.pow(16, i));
+            } else {
+                suma = Integer.parseInt("" + Integer.parseInt(convertidor.charAt(i) + "") * (long) Math.pow(16, i)) + suma;
+            }
+        }
+        
+        return suma;
+    }
+    
     
 }
